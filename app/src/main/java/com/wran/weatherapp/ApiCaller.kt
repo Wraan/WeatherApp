@@ -23,7 +23,6 @@ class ApiCaller(private var url: String){
             view.runOnUiThread {
                 view.updateWeatherInfo(info)
             }
-
         }
     }
 

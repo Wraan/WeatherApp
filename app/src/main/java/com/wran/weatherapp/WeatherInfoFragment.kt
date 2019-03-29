@@ -46,7 +46,6 @@ class WeatherInfoFragment : Fragment() {
     }
 
     fun updateView(info: WeatherInfoDto) {
-        cityName.text = info.city.name
         updateIcons(info)
         updateHours(info)
         updateTemperatures(info)
@@ -54,7 +53,7 @@ class WeatherInfoFragment : Fragment() {
     }
 
     private fun updateIcons(info: WeatherInfoDto) {
-        var icons = arrayOf(/*forecast0icon,*/ forecast1Icon, forecast2Icon, forecast3Icon, forecast4Icon )
+        var icons = arrayOf(forecast0Icon, forecast1Icon, forecast2Icon, forecast3Icon, forecast4Icon )
         for (i in 0 until icons.size) {
             icons[i].setImageResource(R.drawable.few_clouds)
             Log.d("info", i.toString() + ": " + info.list[i].weather[0].id.toString())
@@ -100,7 +99,13 @@ class WeatherInfoFragment : Fragment() {
     }
 
     private fun updateCurrentInfo(info: WeatherInfoDto) {
-
+        cityName.text = info.city.name
+        infoDate.text = info.list[0].dtTxt
+        infoDesc.text = info.list[0].weather[0].description
+        infoTemp.text = info.list[0].main.temp.toString() + "\u00B0C"
+        infoWind.text = info.list[0].wind.speed.toString() + " m/s"
+        infoPressure.text = info.list[0].main.pressure.toString() + " hpa"
+        infoHumidity.text = info.list[0].main.humidity.toString() + " %"
     }
 
 }

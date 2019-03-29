@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentManager
 class MainActivity : AppCompatActivity(), MainScreenFragment.MainScreenFragmentListener, WeatherInfoFragment.WeatherInforListener {
 
     override fun confirmCity(city: String) {
+
+        //https://api.openweathermap.org/data/2.5/forecast?q=gliwice&appid=cfb6b8abd84948027d6ac97439d80ba7&units=metric
         val key = "cfb6b8abd84948027d6ac97439d80ba7"
         val server = "https://api.openweathermap.org/data/2.5/forecast?"
         val url = server + "q=" + city + "&appid=" + key + "&units=metric"

@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.wran.weatherapp.R.id.container
 import kotlinx.android.synthetic.main.fragment_weather_info.*
 
 
@@ -47,6 +46,7 @@ class WeatherInfoFragment : Fragment() {
     }
 
     fun updateView(info: WeatherInfoDto) {
+        cityName.text = info.city.name
         updateIcons(info)
         updateHours(info)
         updateTemperatures(info)
@@ -54,7 +54,7 @@ class WeatherInfoFragment : Fragment() {
     }
 
     private fun updateIcons(info: WeatherInfoDto) {
-        var icons = arrayOf(forecast0icon, forecast1icon, forecast2icon, forecast3icon, forecast4icon)
+        var icons = arrayOf(/*forecast0icon,*/ forecast1Icon, forecast2Icon, forecast3Icon, forecast4Icon )
         for (i in 0 until icons.size) {
             icons[i].setImageResource(R.drawable.few_clouds)
             Log.d("info", i.toString() + ": " + info.list[i].weather[0].id.toString())
@@ -86,11 +86,17 @@ class WeatherInfoFragment : Fragment() {
     }
 
     private fun updateHours(info: WeatherInfoDto) {
-
+        forecast1Hour.text = info.list[1].dtTxt.split(" ")[1].substring(0,5)
+        forecast2Hour.text = info.list[2].dtTxt.split(" ")[1].substring(0,5)
+        forecast3Hour.text = info.list[3].dtTxt.split(" ")[1].substring(0,5)
+        forecast4Hour.text = info.list[4].dtTxt.split(" ")[1].substring(0,5)
     }
 
     private fun updateTemperatures(info: WeatherInfoDto) {
-
+        forecast1Temp.text = info.list[1].main.temp.toString() + "\u00B0C"
+        forecast2Temp.text = info.list[2].main.temp.toString() + "\u00B0C"
+        forecast3Temp.text = info.list[3].main.temp.toString() + "\u00B0C"
+        forecast4Temp.text = info.list[4].main.temp.toString() + "\u00B0C"
     }
 
     private fun updateCurrentInfo(info: WeatherInfoDto) {

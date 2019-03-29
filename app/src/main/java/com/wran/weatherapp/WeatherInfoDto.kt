@@ -14,8 +14,12 @@ data class WeatherInfoDto(
     @SerializedName("message")
     val message: Double
 ) {
-    class City(
-    )
+    data class City(
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("name")
+        val name: String
+        )
 
     data class X(
         @SerializedName("clouds")

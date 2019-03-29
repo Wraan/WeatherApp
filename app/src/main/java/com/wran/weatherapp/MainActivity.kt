@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity(), MainScreenFragment.MainScreenFragmentL
     override fun confirmCity(city: String) {
         val key = "cfb6b8abd84948027d6ac97439d80ba7"
         val server = "https://api.openweathermap.org/data/2.5/forecast?"
-        val url = server + "q=" + city + "&appid=" + key
+        val url = server + "q=" + city + "&appid=" + key + "&units=metric"
 
         val apiCaller = ApiCaller(url)
         apiCaller.setUIActivity(this)
